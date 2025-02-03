@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", serif;
+}
+:root {
+  --primary-color: #43ab8f;
+  --secondary-color: #b6e2d6;
+}
+body {
+  background-color: var(--secondary-color);
+}
+
+header {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(67, 171, 143, 0.3) 50%,
+      rgba(182, 226, 214, 0.3) 100%
+    ),
+    url("/resources/header.png");
+  height: 497px;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+}
+
+.top-menu {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+.top-menu a {
+  text-align: center;
+  width: 126px;
+  text-decoration: none;
+  color: #43ab8f;
+  background-color: #b6e2d6;
+  padding: 0.5rem;
+  border: 0.5px solid transparent;
+  border-radius: 5px;
+  margin: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.top-menu a:hover {
+  transform: scale(1.1);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.header-slider {
+  margin: auto;
+  padding: 2em 5em;
+  font: normal 80px/100px "Raleway", serif;
+  color: var(--secondary-color);
+}
+.header-slider p {
+  height: 100px;
+  float: left;
+  margin-right: 0.3em;
+}
+.header-slider b {
+  float: left;
+  overflow: hidden;
+  position: relative;
+  height: 100px;
+}
+.header-slider .inner-slider {
+  display: inline-block;
+  color: var(--primary-color);
+  position: relative;
+  white-space: nowrap;
+  text-shadow: 1px 1px 0 var(--secondary-color);
+  top: 0;
+  left: 0;
+
+  animation: move 5s;
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
+}
+@keyframes move {
+  0% {
+    top: 0px;
+  }
+  40% {
+    top: -100px;
+  }
+  80% {
+    top: -200px;
+  }
+}
