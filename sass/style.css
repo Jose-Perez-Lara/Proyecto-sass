@@ -38,6 +38,25 @@ nav {
   padding: 0.5rem;
 }
 
+.button-compra {
+  text-align: center;
+  width: 150px;
+  text-decoration: none;
+  color: var(--secondary-color);
+  background-color: #3b8974;
+  padding: 0.7rem;
+  border: 0.5px solid transparent;
+  border-radius: 5px;
+  margin: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-compra:hover {
+  transform: scale(1.1);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
 .top-menu a {
   text-align: center;
   width: 126px;
@@ -79,10 +98,10 @@ nav {
 
 .header-slider .inner-slider {
   display: inline-block;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   position: relative;
   white-space: nowrap;
-  text-shadow: 1px 1px 0 var(--secondary-color);
+  text-shadow: 2px 2px 0 #3b8974;
   top: 0;
   left: 0;
   animation: move 5s;
@@ -100,4 +119,66 @@ nav {
   80% {
     top: -200px;
   }
+}
+.promociones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.promociones h2 {
+  font-size: xxx-large;
+  color: #3b8974;
+}
+
+.promociones h3 {
+  font-size: x-large;
+  color: #43ab8f;
+}
+
+.grid-promociones {
+  text-align: center;
+  display: grid;
+  grid-template-areas: "area-click area-click area-click" "producto1 producto2 producto3";
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  color: #b6e2d6;
+  transition: all 0.3s ease-in-out;
+}
+
+.prodcuto1 {
+  grid-area: area-click;
+}
+
+.producto {
+  background-color: #43ab8f;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.producto img {
+  max-width: 100%;
+}
+
+.producto p {
+  font-size: 1rem;
+  color: #b6e2d6;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.producto.expandido {
+  grid-area: area-click;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }/*# sourceMappingURL=style.css.map */
