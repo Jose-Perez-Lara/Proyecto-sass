@@ -149,10 +149,6 @@ nav {
   transition: all 0.3s ease-in-out;
 }
 
-.prodcuto1 {
-  grid-area: area-click;
-}
-
 .producto {
   background-color: #43ab8f;
   padding: 20px;
@@ -170,8 +166,8 @@ nav {
   max-width: 100%;
 }
 
-.producto p {
-  font-size: 1rem;
+.producto h2 {
+  font-size: 2rem;
   color: #b6e2d6;
   font-weight: bold;
   margin-top: 10px;
