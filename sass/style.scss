@@ -4,19 +4,27 @@
   box-sizing: border-box;
   font-family: "Raleway", serif;
 }
-:root {
-  --primary-color: #43ab8f;
-  --secondary-color: #b6e2d6;
-}
+$colores: (
+  principal: #43ab8f,
+  secundario: #b6e2d6,
+  terciario: #3b8974,
+);
+$tamanos: (
+  titulo: 2rem,
+  subtitulo: x-large,
+  categoria: xxx-large,
+  parrafo: 1.5rem,
+);
+
 body {
-  background-color: var(--secondary-color);
+  background-color: map-get($colores, secundario);
 }
 
 header {
   background-image: linear-gradient(
       to bottom,
-      rgba(67, 171, 143, 0.3) 50%,
-      rgba(182, 226, 214, 0.3) 100%
+      rgba(map-get($colores, principal), 0.3) 50%,
+      rgba(map-get($colores, secundario), 0.3) 100%
     ),
     url("/resources/header.png");
   height: 497px;
@@ -25,6 +33,7 @@ header {
   display: flex;
   flex-direction: column;
 }
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -39,71 +48,78 @@ nav {
   align-items: center;
   padding: 0.5rem;
 }
+
 .button-compra {
   text-align: center;
   width: 150px;
   text-decoration: none;
-  color: var(--secondary-color);
-  background-color: #3b8974;
+  color: map-get($colores, secundario);
+  background-color: map-get($colores, terciario);
   padding: 0.7rem;
   border: 0.5px solid transparent;
   border-radius: 5px;
   margin: 5px;
   transition: all 0.3s ease-in-out;
 }
+
 .button-compra:hover {
   transform: scale(1.1);
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  background-color: map-get($colores, secundario);
+  color: map-get($colores, principal);
 }
+
 .top-menu a {
   text-align: center;
   width: 126px;
   text-decoration: none;
-  color: #43ab8f;
-  background-color: #b6e2d6;
+  color: map-get($colores, principal);
+  background-color: map-get($colores, secundario);
   padding: 0.5rem;
   border: 0.5px solid transparent;
   border-radius: 5px;
   margin: 5px;
   transition: all 0.3s ease-in-out;
 }
+
 .top-menu a:hover {
   transform: scale(1.1);
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: map-get($colores, principal);
+  color: map-get($colores, secundario);
 }
 
 .header-slider {
   margin: auto;
   padding: 2em 5em;
   font: normal 80px/100px "Raleway", serif;
-  color: var(--secondary-color);
+  color: map-get($colores, secundario);
 }
+
 .header-slider p {
   height: 100px;
   float: left;
   margin-right: 0.3em;
 }
+
 .header-slider b {
   float: left;
   overflow: hidden;
   position: relative;
   height: 100px;
 }
+
 .header-slider .inner-slider {
   display: inline-block;
-  color: var(--secondary-color);
+  color: map-get($colores, secundario);
   position: relative;
   white-space: nowrap;
-  text-shadow: 2px 2px 0 #3b8974;
+  text-shadow: 2px 2px 0 map-get($colores, terciario);
   top: 0;
   left: 0;
-
   animation: move 5s;
   animation-iteration-count: infinite;
   animation-delay: 1s;
 }
+
 @keyframes move {
   0% {
     top: 0px;
@@ -115,10 +131,12 @@ nav {
     top: -200px;
   }
 }
-@mixin mini-header($size, $color) {
+
+@mixin header($size, $color) {
   font-size: $size;
   color: $color;
 }
+
 .promociones {
   display: flex;
   flex-direction: column;
@@ -127,11 +145,13 @@ nav {
 }
 
 .promociones h2 {
-  @include mini-header(xxx-large, #3b8974);
+  @include header(map-get($tamanos, categoria), map-get($colores, terciario));
 }
+
 .promociones h3 {
-  @include mini-header(x-large, #43ab8f);
+  @include header(map-get($tamanos, subtitulo), map-get($colores, principal));
 }
+
 .grid-promociones {
   text-align: center;
   display: grid;
@@ -139,15 +159,15 @@ nav {
     "area-click area-click area-click"
     "producto1 producto2 producto3";
   gap: 20px;
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 1rem;
-  color: #b6e2d6;
+  color: map-get($colores, secundario);
   transition: all 0.3s ease-in-out;
 }
 
 .producto {
-  background-color: #43ab8f;
+  background-color: map-get($colores, principal);
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -157,20 +177,79 @@ nav {
   align-items: center;
   cursor: pointer;
   transition: all 0.3s ease;
+
+  img {
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: map-get($tamanos, titulo);
+    color: map-get($colores, secundario);
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  &.expandido {
+    grid-area: area-click;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 }
 
-.producto img {
-  max-width: 100%;
-}
-.producto h2 {
-  font-size: 2rem;
-  color: #b6e2d6;
-  font-weight: bold;
-  margin-top: 10px;
+.categorias {
+  display: flex;
+  flex-direction: column;
+  margin: 2vh;
+
+  h2 {
+    font-size: map-get($tamanos, categoria);
+    text-align: center;
+    color: map-get($colores, terciario);
+    margin: 1rem;
+  }
 }
 
-.producto.expandido {
-  grid-area: area-click;
-  z-index: 10;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.categorias-menu {
+  display: flex;
+  justify-content: space-evenly;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  h3 {
+    font-size: map-get($tamanos, subtitulo);
+    text-align: center;
+    color: map-get($colores, principal);
+    margin: 1rem;
+  }
+}
+
+.sobre-nosotros {
+  padding: 2vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vh;
+  align-items: center;
+  justify-content: space-evenly;
+
+  p {
+    font-size: map-get($tamanos, parrafo);
+    color: map-get($colores, terciario);
+    text-align: center;
+    margin: 1rem;
+    width: 75%;
+  }
+}
+
+.header-sobre-nosotros {
+  width: 75%;
+}
+
+.manos {
+  width: 100px;
 }
